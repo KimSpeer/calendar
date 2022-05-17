@@ -6,7 +6,7 @@
   <div class="lg:flex lg:h-full lg:flex-col">
       <header class="relative z-20 flex items-center justify-between px-6 py-4 border-b border-gray-200 lg:flex-none">
         <h1 class="text-lg font-semibold text-gray-900">
-          <time datetime="2022-01">Januar 2022</time>
+          <time datetime="2022-01"> {{$monthname}} 2022</time>
         </h1>
         <div class="flex items-center">
           <div class="flex items-center rounded-md shadow-sm md:items-stretch">
@@ -114,12 +114,25 @@
                 Is current month, include: "bg-white"
                 Is not current month, include: "bg-gray-50 text-gray-500"
               -->
-              <div class="relative px-3 py-2 text-gray-500 bg-gray-50">
-                <!--
-                  Is today, include: "flex h-6 w-6 items-center justify-center rounded-full bg-indigo-600 font-semibold text-white"
-                -->
-                <time datetime="2021-12-29">29</time>
+
+
+              @foreach ($predays as $preday)
+
+              <div class="relative px-3 py-2 bg-white">
+                <time datetime="2022-01-01">{{$preday}}</time>
               </div>
+
+              @endforeach
+              @foreach ($days as $day)
+
+              <div class="relative px-3 py-2 bg-white">
+                <time datetime="2022-01-01">{{$day}}</time>
+              </div>
+
+              @endforeach
+
+
+
             </div>
         </div>
     </div>
