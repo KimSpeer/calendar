@@ -118,15 +118,15 @@
 
               @foreach ($predays as $preday)
 
-              <div class="relative px-3 py-2 bg-white">
-                <time datetime="2022-01-01">{{$preday}}</time>
+              <div class="relative px-3 py-2 text-gray-500 bg-gray-50">
+                <time datetime="2021-12-28">{{substr($preday, -11,-9)}}</time>
               </div>
 
               @endforeach
               @foreach ($days as $day)
 
               <div class="relative px-3 py-2 bg-white">
-                <time datetime="2022-01-01">{{$day}}</time>
+                <time datetime="2022-01-01">{{substr($day, -11,-9)}}</time>
               </div>
 
               @endforeach
