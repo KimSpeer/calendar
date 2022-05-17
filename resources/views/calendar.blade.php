@@ -113,6 +113,7 @@
         <div class="py-2 bg-white">S<span class="sr-only sm:not-sr-only">at</span></div>
         <div class="py-2 bg-white">S<span class="sr-only sm:not-sr-only">un</span></div>
       </div>
+
       <div class="flex text-xs leading-6 text-gray-700 bg-gray-200 lg:flex-auto">
         <div class="hidden w-full lg:grid lg:grid-cols-7 lg:grid-rows-6 lg:gap-px">
           <!--

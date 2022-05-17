@@ -6,15 +6,23 @@ use Illuminate\Http\Request;
 
 class Calendar extends Controller
 {
-   public function days(){
-    $date1 = Carbon::createFromFormat('m/d/Y H:i:s', '2/01/2022 10:20:00');
+
+    //public $days = array();
 
 
-    $resultmonth = $date1->englishMonth;
+   public function days($month){
+    $date1 = Carbon::createFromFormat('m/d/Y', $month.'/01/2022');
+
     $resultdaysinmonth = $date1->daysInMonth;
-    $resultdayoftheweek = $date1->englishDayOfWeek;
 
+        $days[0]=$month;
+        echo($days[0].' ');
+    for($count = 1; $count<=$resultdaysinmonth;$count++){
 
-    dd($resultmonth.' '.$resultdayoftheweek.' Days:'.$resultdaysinmonth);
+        $date = Carbon::createFromFormat('m/d/Y', $month.'/'.$count.'/2022');
+        $days[$count] = $date->englishDayOfWeek;
+        echo($count.$days[$count].' ');
+    }
+    return view('components.headcalendar', $days);
    }
 }
