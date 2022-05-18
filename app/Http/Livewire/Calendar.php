@@ -8,31 +8,36 @@ use Livewire\Component;
 class Calendar extends Component
 {
     //public $days = array();
+    public $day;
+    public $year;
     public $month;
     public $monthname;
+
     public $predays;
     public $days;
+    public $today;
 
 
-    public function days($month)
+    public function days()
     {
-        $this->monthname = $this->getMonthName($month);
-        $this->predays = $this->addDaysPreviouse($month);
-        $this->days = $this->getDaysforCurrentMonth($month);
+        $this->monthname = $this->getMonthName($this->month);
+        $this->predays = $this->addDaysPreviouse($this->month);
+        $this->days = $this->getDaysforCurrentMonth($this->month);
+        $this->today = Carbon::now();
     }
 
 
     public function getDaysinMonth($month)
     {
-        $date1 = Carbon::createFromFormat('m/d/Y', $month . '/01/2022');
-        return $date1->daysInMonth;
+        $date = $this->createDate($month,$this->year,1);
+        return $date->daysInMonth;
     }
 
 
     public function getMonthName($month)
     {
-        $date1 = Carbon::createFromFormat('m/d/Y', $month . '/01/2022');
-        return $date1->englishMonth;
+        $date = $this->createDate($month,$this->year,1);
+        return $date->englishMonth;
     }
 
 
@@ -42,7 +47,7 @@ class Calendar extends Component
 
         for ($count = 1; $count <= $resultdaysinmonth; $count++) {
 
-            $date = Carbon::createFromFormat('m/d/Y', $month . '/' . $count . '/2022');
+            $date = $this->createDate($month,$this->year,$count);
             $days[$count] = $date->englishDayOfWeek . ' ' . $date;
             //echo($count.$days[$count].' ');
         }
@@ -52,8 +57,9 @@ class Calendar extends Component
 
     public function addDaysPreviouse($month)
     {
-        $date1 = Carbon::createFromFormat('m/d/Y', $month . '/01/2022');
-        $name = $date1->englishDayOfWeek;
+        $date = $this->createDate($month,$this->year,1);
+
+        $name = $date->englishDayOfWeek;
 
         $dayspreviouse = 0;
         switch ($name) {
@@ -82,33 +88,63 @@ class Calendar extends Component
 
 
         $getpreviousemonthdays = $this->getDaysinMonth($month - 1);
-        for ($count = ($getpreviousemonthdays - $dayspreviouse) + 1; $count <= $getpreviousemonthdays; $count++) {
-            $date = Carbon::createFromFormat('m/d/Y', ($month - 1) . '/' . $count . '/2022');
+        for ($count = ($getpreviousemonthdays - $dayspreviouse) + 1; $count <= $getpreviousemonthdays; $count++)
+        {
+            $date = $this->createDate($month-1,$this->year,$count);
             $predays[$count] = $date->englishDayOfWeek . ' ' . $date;
         }
-        return $predays;
+
+            if(isset($predays)){
+                return $predays;
+            }
     }
 
+
     public function previouseMonth(){
+        if($this->month!=1){
         $this->month--;
-        $this->days($this->month);
+        }
+        else{
+            $this->month = 12;
+            $this->year--;
+        }
+
+        $this->days();
         ($this->month.'Previouse');
+
 
     }
 
 
     public function nextMonth(){
-        $this->month++;
+        if($this->month!=12){
+            $this->month++;
+            }
+            else{
+                $this->month = 1;
+                $this->year++;
+            }
+
         $this->days($this->month);
-        echo($this->month.'Next');
 
+    }
 
+    public function today(){
+        $this->day = $this->today->day;
+        $this->month = $this->today->month;
+        $this->year = $this->today->year;
     }
 
 
     public function render()
     {
-        $this->days($this->month);
+        $this->days();
         return view('livewire.calendar');
+    }
+
+
+    public function createDate($month, $year,$day){
+        $date= Carbon::createFromFormat('m/d/Y', $month . '/' . $day . '/'.$year);
+        return $date;
     }
 }

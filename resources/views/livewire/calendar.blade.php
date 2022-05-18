@@ -1,11 +1,10 @@
 <div>
-Hi there
 <div>
     <!-- This example requires Tailwind CSS v2.0+ -->
   <div class="lg:flex lg:h-full lg:flex-col">
       <header class="relative z-20 flex items-center justify-between px-6 py-4 border-b border-gray-200 lg:flex-none">
         <h1 class="text-lg font-semibold text-gray-900">
-          <time datetime="2022-01"> {{$monthname}} 2022</time>
+          <time datetime="2022-01"> {{$monthname}} {{$year}}</time>
         </h1>
         <div class="flex items-center">
           <div class="flex items-center rounded-md shadow-sm md:items-stretch">
@@ -16,7 +15,7 @@ Hi there
                 <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
               </svg>
             </button>
-            <button type="button" class="hidden border-t border-b border-gray-300 bg-white px-3.5 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900 focus:relative md:block">Today</button>
+            <button wire:click="today" type="button" class="hidden border-t border-b border-gray-300 bg-white px-3.5 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900 focus:relative md:block">Today</button>
             <span class="relative w-px h-5 -mx-px bg-gray-300 md:hidden"></span>
             <button wire:click="nextMonth" type="button" class="flex items-center justify-center py-2 pl-4 pr-3 text-gray-400 bg-white border border-l-0 border-gray-300 rounded-r-md hover:text-gray-500 focus:relative md:w-9 md:px-2 md:hover:bg-gray-50">
               <span class="sr-only">Next month</span>
@@ -116,19 +115,31 @@ Hi there
 
 
 
-
+              @if (isset($predays))
               @foreach ($predays as $preday)
 
               <div class="relative px-3 py-2 text-gray-500 bg-gray-50">
                 <time datetime="{{substr($preday, -19,-9)}}">{{substr($preday, -11,-9)}}</time>
+                {{-- {{substr($preday, -11,-9)}} --}}
               </div>
 
               @endforeach
-              @foreach ($days as $day)
 
-              <div class="relative px-3 py-2 bg-white">
+              @endif
+
+              @foreach ($days as $day)
+              @if (substr($day, -17,-9) != substr($today, -17,-9))
+                <div class="relative px-3 py-2 bg-white">
                 <time datetime="{{substr($day, -19,-9)}}">{{substr($day, -11,-9)}}</time>
-              </div>
+                {{-- {{substr($day, -11,-9)}} --}}
+                </div>
+              @else
+              <div class="relative px-3 py-2 font-semibold text-indigo-600 bg-white">
+                <time datetime="{{substr($day, -19,-9)}}" class ="flex items-center justify-center w-6 h-6 font-semibold text-white bg-indigo-600 rounded-full">{{substr($day, -11,-9)}}</time>
+                {{-- {{substr($day, -11,-9)}} --}}
+                </div>
+
+              @endif
 
               @endforeach
 

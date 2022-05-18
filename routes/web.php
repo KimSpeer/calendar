@@ -27,7 +27,7 @@ Route::get('/calendar', function () {
     return view('calendar');
 });
 
-Route::get('/days{month}', [Calendar::class, 'days']);
+Route::get('/days/{month}/{year}', [Calendar::class, 'days']);
 
 
 

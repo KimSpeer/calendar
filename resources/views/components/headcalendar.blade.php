@@ -2,6 +2,6 @@
 
 @section('head')
 
-@livewire('calendar', ['month' => $month])
+@livewire('calendar', ['month' => $month, 'year'=>$year])
 
 @endsection
