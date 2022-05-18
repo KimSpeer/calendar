@@ -20,7 +20,8 @@ class Calendar extends Controller
         return view('components.headcalendar')
         ->with('predays',$predays)
         ->with('days', $days)
-        ->with('monthname',$monthname);
+        ->with('monthname',$monthname)
+        ->with('month',$month);
     }
 
 
