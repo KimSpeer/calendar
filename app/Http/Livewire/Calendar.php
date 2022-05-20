@@ -17,13 +17,25 @@ class Calendar extends Component
     public $days;
     public $today;
 
+    public $events;
+    public $openmodal= true;
+    public $show = false;
+
+    protected $listeners = [
+    'show' => 'show'
+    ];
+
+    public function show()
+    {
+    $this->show = true;
+    }
+
 
     public function days()
     {
         $this->monthname = $this->getMonthName($this->month);
         $this->predays = $this->addDaysPreviouse($this->month);
         $this->days = $this->getDaysforCurrentMonth($this->month);
-        $this->today = Carbon::now();
     }
 
 
@@ -130,14 +142,28 @@ class Calendar extends Component
     }
 
     public function today(){
+        if(!isset($this->today)){
+            $this->today=Carbon::now();
+        }
         $this->day = $this->today->day;
         $this->month = $this->today->month;
         $this->year = $this->today->year;
     }
 
+    public function oneClickEvent(){
+        $this->openmodal=true;
+    }
+
+    public function addEvent(){
+        dd('here');
+    }
+
 
     public function render()
     {
+        if(!isset($this->day)){
+            $this->today();
+        }
         $this->days();
         return view('livewire.calendar');
     }

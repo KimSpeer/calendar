@@ -10,10 +10,13 @@ class Calendar extends Controller
     //public $days = array();
 
 
-   public function days($month,$year){
-        return view('components.headcalendar')
-        ->with('month',$month)
-        ->with('year',$year);
+   public function days(){
+        return view('components.headcalendar');
+    }
+
+    public function event(){
+        return view('components.newevent');
+
     }
 
 
