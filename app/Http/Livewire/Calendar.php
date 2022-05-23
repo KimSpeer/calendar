@@ -21,6 +21,19 @@ class Calendar extends Component
     public $openmodal= true;
     public $show = false;
 
+    public $subject;
+    public $startEvent;
+    public $endEvent;
+    public $body;
+
+    public $count;
+
+
+    protected $rules = [
+        'subject' => 'required|max:20',
+
+    ];
+
     protected $listeners = [
     'show' => 'show'
     ];
@@ -155,7 +168,10 @@ class Calendar extends Component
     }
 
     public function addEvent(){
-        dd('here');
+        // Add registration data to modal
+        //dd   ($this->subject.$this->startEvent.$this->endEvent.$this->body);
+        $this->events[$this->count] = $this->startEvent.$this->endEvent.$this->subject.'/'.$this->body;
+        $this->count++;
     }
 
 
