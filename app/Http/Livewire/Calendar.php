@@ -17,6 +17,7 @@ class Calendar extends Component
     public $predays;
     public $days;
     public $today;
+    public $daysinmonth;
 
     public $events;
     public $openmodal= true;
@@ -51,7 +52,7 @@ class Calendar extends Component
         $this->monthname = $this->getMonthName($this->month);
         $this->predays = $this->addDaysPreviouse($this->month);
         $this->days = $this->getDaysforCurrentMonth($this->month);
-
+        $this->buildOnMonth();
         $this->nom = DB::table('events')->get();
     }
 
@@ -77,7 +78,7 @@ class Calendar extends Component
         for ($count = 1; $count <= $resultdaysinmonth; $count++) {
 
             $date = $this->createDate($month,$this->year,$count);
-            $days[$count] = $date->englishDayOfWeek . ' ' . $date;
+            $days[$count] ='cur '.$date->shortEnglishDayOfWeek . ' ' . $date;
             //echo($count.$days[$count].' ');
         }
 
@@ -120,7 +121,7 @@ class Calendar extends Component
         for ($count = ($getpreviousemonthdays - $dayspreviouse) + 1; $count <= $getpreviousemonthdays; $count++)
         {
             $date = $this->createDate($month-1,$this->year,$count);
-            $predays[$count] = $date->englishDayOfWeek . ' ' . $date;
+            $predays[$count] = 'pre '.$date->shortEnglishDayOfWeek  . ' ' . $date ;
         }
 
             if(isset($predays)){
@@ -145,6 +146,7 @@ class Calendar extends Component
     }
 
 
+
     public function nextMonth(){
         if($this->month!=12){
             $this->month++;
@@ -158,6 +160,7 @@ class Calendar extends Component
 
     }
 
+
     public function today(){
         if(!isset($this->today)){
             $this->today=Carbon::now();
@@ -166,6 +169,7 @@ class Calendar extends Component
         $this->month = $this->today->month;
         $this->year = $this->today->year;
     }
+
 
     public function oneClickEvent(){
         $this->openmodal=true;
@@ -185,6 +189,20 @@ class Calendar extends Component
     }
 
 
+    public function buildOnMonth(){
+        $this->daysinmonth = null;
+        if(isset($this->predays)){
+
+            foreach($this->predays as $preday){
+                $this->daysinmonth [] = $preday;
+            }
+        }
+        foreach($this->days as $day){
+            $this->daysinmonth [] = $day;
+        }
+    }
+
+
     public function render()
     {
         if(!isset($this->day)){
@@ -195,7 +213,7 @@ class Calendar extends Component
     }
 
 
-    public function createDate($month, $year,$day){
+    public function createDate($month, $year, $day){
         $date= Carbon::createFromFormat('m/d/Y', $month . '/' . $day . '/'.$year);
         return $date;
     }
