@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Carbon\Carbon;
 use Livewire\Component;
+use Illuminate\Support\Facades\DB;
 
 class Calendar extends Component
 {
@@ -27,6 +28,7 @@ class Calendar extends Component
     public $body;
 
     public $count;
+    public $nom;
 
 
     protected $rules = [
@@ -49,6 +51,8 @@ class Calendar extends Component
         $this->monthname = $this->getMonthName($this->month);
         $this->predays = $this->addDaysPreviouse($this->month);
         $this->days = $this->getDaysforCurrentMonth($this->month);
+
+        $this->nom = DB::table('events')->get();
     }
 
 
@@ -168,10 +172,16 @@ class Calendar extends Component
     }
 
     public function addEvent(){
-        // Add registration data to modal
-        //dd   ($this->subject.$this->startEvent.$this->endEvent.$this->body);
         $this->events[$this->count] = $this->startEvent.$this->endEvent.$this->subject.'/'.$this->body;
         $this->count++;
+
+        DB::table('events')->insert([
+            'subject' => $this->subject,
+            'eventStart' => $this->startEvent,
+            'eventEnd' => $this->endEvent,
+            'body' =>$this->body
+        ]);
+
     }
 
 

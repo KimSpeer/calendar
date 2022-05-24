@@ -212,7 +212,7 @@
                         @if (isset($predays))
 
                             @foreach ($predays as $preday)
-                                <div class="relative h-24 px-3 py-2 text-gray-500 bg-gray-50 min-h-10">
+                                <div class="relative h-16 px-3 py-2 text-gray-500 h-15 bg-gray-50">
                                     <time
                                         datetime="{{ substr($preday, -19, -9) }}">{{ substr($preday, -11, -9) }}</time>
 
@@ -248,7 +248,7 @@
 
                         @foreach ($days as $day)
                             @if (substr($day, -17, -9) != substr($today, -17, -9))
-                                <div class="relative h-24 px-3 py-2 bg-white ">
+                                <div class="relative h-16 px-3 py-2 bg-white ">
                                     <time datetime="{{ substr($day, -19, -9) }}">{{ substr($day, -11, -9) }}</time>
                                       @if (isset($events))
                                         <ol class="mt-2">
@@ -273,17 +273,17 @@
                                     @endif
                                 </div>
                             @else
-                                <div class="relative h-24 px-3 py-2 font-semibold text-indigo-600 bg-white ">
+                                <div class="relative h-16 px-3 py-2 font-semibold text-indigo-600 bg-white ">
                                     <time datetime="{{ substr($day, -19, -9) }}"
                                         class="flex items-center justify-center w-6 h-6 font-semibold text-white bg-indigo-600 rounded-full">{{ substr($day, -11, -9) }}</time>
                                     {{-- {{substr($day, -11,-9)}} --}}
                                     @if (isset($events))
                                     <ol class="mt-2">
                                         @foreach ($events as $event)
-                                        @if ( substr($day, -19, -9)== substr($event, 0, 10))
+                                        @if ( substr($day, -19, -9) == substr($event, 0, 10))
                                         <li>
                                             <a href="#" class="flex group">
-                                                <p class="flex-auto font-medium text-gray-900 truncate group-hover:text-indigo-600"></p>
+                                                <p class="flex-auto font-medium text-gray-900 truncate group-hover:text-indigo-600">{{strtok(substr ($event,32), '/')}}</p>
 
                                                 <time datetime="{{substr($event, 0, 16)}}"
                                                     class="flex-none hidden ml-3 text-gray-500 group-hover:text-indigo-600 xl:block">{{substr($event, 11, 5)}}</time>
@@ -310,4 +310,9 @@
 
         </div>
     </div>
+
+    @foreach ($nom as $n)
+    <p>{{$n->subject}}</p>
+
+    @endforeach
 </div>
