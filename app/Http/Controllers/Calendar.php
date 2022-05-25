@@ -19,4 +19,8 @@ class Calendar extends Controller
 
     }
 
+    public function new(){
+        return view('components.newcalendar');
+    }
+
 }

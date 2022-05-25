@@ -16,11 +16,13 @@ return new class extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->string('subject');
-            $table->date('eventStart');
-            $table->date('eventEnd');
+            $table->date('event_start');
+            $table->date('event_end');
+            $table->string('time_start');
+            $table->string('time_end');
+
             $table->string('body')->nullable();
-            $table->date('created_at');
-            $table->date('updated_at');
+            $table->timestamps();
         });
     }
 

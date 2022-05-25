@@ -32,13 +32,10 @@ class Calendar extends Component
     public $nom;
 
 
+
     protected $rules = [
         'subject' => 'required|max:20',
 
-    ];
-
-    protected $listeners = [
-    'show' => 'show'
     ];
 
     public function show()
@@ -79,7 +76,6 @@ class Calendar extends Component
 
             $date = $this->createDate($month,$this->year,$count);
             $days[$count] ='cur '.$date->shortEnglishDayOfWeek . ' ' . $date;
-            //echo($count.$days[$count].' ');
         }
 
         return $days;
@@ -91,7 +87,6 @@ class Calendar extends Component
 
         $name = $date->englishDayOfWeek;
 
-        $dayspreviouse = 0;
         switch ($name) {
             case 'Monday':
                 $dayspreviouse = 0;
@@ -141,8 +136,6 @@ class Calendar extends Component
 
         $this->days();
         ($this->month.'Previouse');
-
-
     }
 
 
@@ -181,9 +174,11 @@ class Calendar extends Component
 
         DB::table('events')->insert([
             'subject' => $this->subject,
-            'eventStart' => $this->startEvent,
-            'eventEnd' => $this->endEvent,
-            'body' =>$this->body
+            'event_start' => $this->startEvent,
+            'event_end' => $this->endEvent,
+            'time_start' => substr ($this->startEvent, 11,5),
+            'time_end' => substr ($this->endEvent, 11,5),
+            'body' => $this->body
         ]);
 
     }
