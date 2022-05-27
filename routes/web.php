@@ -23,9 +23,6 @@ Route::get('/calendar', function () {
     return view('calendar');
 });
 
-Route::get('/calendar', function () {
-    return view('calendar');
-});
 
 Route::get('/days', [Calendar::class, 'days']);
 Route::get('/event', [Calendar::class, 'event']);

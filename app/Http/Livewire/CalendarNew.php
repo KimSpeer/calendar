@@ -139,15 +139,25 @@ class CalendarNew extends Component
             $this->year--;
         }
         $this->days();
-        dump($this->onemonth);
     }
 
 
 
     public function nextMonth()
     {
-        $this->monthname = $this->getMonthName($this->month - 1);
-        $this->days($this->month);
+
+            if($this->month!=12){
+                $this->month++;
+                }
+                else{
+                    $this->month = 1;
+                    $this->year++;
+                }
+
+            $this->days($this->month);
+
+
+
     }
 
 
