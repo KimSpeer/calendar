@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Carbon\Carbon;
 use Livewire\Component;
+use Illuminate\Support\Facades\DB;
 
 class CalendarNew extends Component
 {
@@ -17,23 +18,21 @@ class CalendarNew extends Component
     public $monthname;
     public $onemonth;
 
+    public $events;
+
+    public $subject;
+    public $startEvent;
+    public $endEvent;
+    public $body;
+
 
     public function days()
     {
         $this->monthname = $this->getMonthName($this->month);
         $this->buildOneMonth();
+        $this->events = DB::table('events')->get();
     }
 
-    public function today()
-    {
-        if (!isset($this->today)) {
-            $this->today = Carbon::now();
-        }
-
-        $this->day = $this->today->day;
-        $this->month = $this->today->month;
-        $this->year = $this->today->year;
-    }
 
     public function buildOneMonth()
     {
@@ -155,10 +154,31 @@ class CalendarNew extends Component
                 }
 
             $this->days($this->month);
+    }
 
+    public function today()
+    {
+        if (!isset($this->today)) {
+            $this->today = Carbon::now();
+        }
 
+        $this->day = $this->today->day;
+        $this->month = $this->today->month;
+        $this->year = $this->today->year;
+    }
+
+    public function addEvent(){
+        DB::table('events')->insert([
+            'subject' => $this->subject,
+            'event_start' => $this->startEvent,
+            'event_end' => $this->endEvent,
+            'time_start' => substr ($this->startEvent, 11,5),
+            'time_end' => substr ($this->endEvent, 11,5),
+            'body' => $this->body
+        ]);
 
     }
+
 
 
     public function render()
