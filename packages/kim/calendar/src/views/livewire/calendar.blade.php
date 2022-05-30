@@ -1,5 +1,5 @@
-<div>
 
+<div>
     <h2 class="text-lg font-semibold text-gray-900">Upcoming meetings</h2>
     <div class="lg:grid lg:grid-cols-12 lg:gap-x-16">
         <div class="mt-10 ml-10 mr-10 text-center lg:col-start-8 lg:col-end-13 lg:row-start-1 lg:mt-9 xl:col-start-9">
@@ -91,7 +91,7 @@
             </div>
 
             <!-- modal div -->
-            <div class="" x-data="{ open: false }">
+            <div class="hidden" x-data="{ open: false }">
                 <!-- Button (blue), duh! -->
                 <button
                     class="w-full px-4 py-2 mt-8 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow focus:outline-none hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"

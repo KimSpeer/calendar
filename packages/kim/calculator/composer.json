@@ -1,0 +1,17 @@
+{
+    "name": "kim.speer/calculator",
+    "description": "Just a little test",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "KimSpeer\\Calculator\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "KimSpeer",
+            "email": "kim.speer@co-IT.eu"
+        }
+    ],
+    "require": {}
+}

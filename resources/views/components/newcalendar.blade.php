@@ -7,13 +7,8 @@
 <div class="mx-20">
  @livewire('calendar-new')
 </div>
-<div class="my-20"></div>
-<div class="mx-96">
+{{-- <div class="my-20"></div>
     @livewire('calendar')
-
-</div>
-
-
-<div class="mb-20"></div>
+<div class="mb-20"></div> --}}
 
 @endsection

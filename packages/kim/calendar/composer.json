@@ -1,0 +1,17 @@
+{
+    "name": "kim.speer/calendar",
+    "description": "This Package will create a calendar",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "KimSpeer\\Calendar\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "KimSpeer",
+            "email": "kim.speer@co-IT.eu"
+        }
+    ],
+    "require": {}
+}
