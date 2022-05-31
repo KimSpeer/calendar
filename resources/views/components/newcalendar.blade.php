@@ -11,4 +11,5 @@
     @livewire('calendar')
 <div class="mb-20"></div> --}}
 
+@livewire('kim:test')
 @endsection

@@ -27,7 +27,7 @@ class Calendar extends Component
     public $body;
 
 
-    function __construct(){
+    function __mount(){
         $this->today();
         $this->days();
     }
@@ -131,9 +131,12 @@ class Calendar extends Component
     }
 
 
-
-    //click Functions
-
+  /*
+    |--------------------------------------------------------------------------
+    | Custom modules setup
+    |--------------------------------------------------------------------------
+    |
+    */
 
     public function previouseMonth()
     {
@@ -186,6 +189,8 @@ class Calendar extends Component
         ]);
 
     }
+
+
 
     public function render()
     {

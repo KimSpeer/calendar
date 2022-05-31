@@ -204,7 +204,7 @@ class Calendar extends Component
             $this->today();
         }
         $this->days();
-        return view('livewire.calendar');
+        return view('calendar::livewire.calendar');
     }
 
 

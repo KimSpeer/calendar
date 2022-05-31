@@ -3,16 +3,19 @@
 
 <head>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <title>Calculator</title>
     @livewireStyles
 </head>
 
 <body>
-    <h1 style="text-align:center">
-        Calendar
-    </h1>
+
+<div>
+
     @livewire('component-test')
-    @livewireScripts
+</div>
+
+@livewireScripts
 </body>
 
 </html>

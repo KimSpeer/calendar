@@ -24,6 +24,10 @@ Route::get('/calendar', function () {
 Route::get('/days', [Calendar::class, 'days']);
 Route::get('/event', [Calendar::class, 'event']);
 Route::get('/new', [Calendar::class, 'new']);
+Route::get('/drag', [Calendar::class, 'new']);
+Route::get('/package', [Calendar::class, 'package']);
+
+
 
 
 

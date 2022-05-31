@@ -23,4 +23,8 @@ class Calendar extends Controller
         return view('components.newcalendar');
     }
 
+    public function package(){
+        return view('kim:calendar');
+    }
+
 }

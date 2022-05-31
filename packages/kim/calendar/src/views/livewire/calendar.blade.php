@@ -1,4 +1,3 @@
-
 <div>
     <h2 class="text-lg font-semibold text-gray-900">Upcoming meetings</h2>
     <div class="lg:grid lg:grid-cols-12 lg:gap-x-16">
@@ -91,7 +90,7 @@
             </div>
 
             <!-- modal div -->
-            <div class="hidden" x-data="{ open: false }">
+            <div class="" x-data="{ open: false }">
                 <!-- Button (blue), duh! -->
                 <button
                     class="w-full px-4 py-2 mt-8 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow focus:outline-none hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
@@ -261,5 +260,6 @@
     </div>
 
 
+    <button wire:click="like">Like Post</button>
 
 </div>
