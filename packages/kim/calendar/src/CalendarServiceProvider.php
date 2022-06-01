@@ -16,9 +16,10 @@ class CalendarServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->make('KimSpeer\Calendar\CalendarController');
-        $this->loadViewsFrom(__DIR__.'/views', 'calendar');
+        $this->loadViewsFrom(__DIR__.'/views', 'DragAndDropSortlist');
+        Livewire::component('kim:test', Calendar::class);
 
-        Livewire::component('component-test', Calendar::class);
+
     }
 
     /**

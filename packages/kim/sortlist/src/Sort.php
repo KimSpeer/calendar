@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace KimSpeer\Sortlist;
 
 use Livewire\Component;
 
-class Things extends Component
+class Sort extends Component
 {
     public $things = [
         ['id' => 1, 'title' => 'Do Dishes'],
@@ -25,6 +25,6 @@ class Things extends Component
 
     public function render()
     {
-        return view('livewire.things');
+        return view('sortlist::livewire.sort');
     }
 }

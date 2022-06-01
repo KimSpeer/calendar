@@ -196,6 +196,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         KimSpeer\Calculator\CalculatorServiceProvider::class,
         KimSpeer\Calendar\CalendarServiceProvider::class,
+        KimSpeer\Sortlist\SortlistServiceProvider::class,
+
 
     ],
 

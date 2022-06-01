@@ -24,7 +24,10 @@ class Calendar extends Controller
     }
 
     public function package(){
-        return view('kim:calendar');
+        return view('developer');
     }
 
+    public function drag(){
+        return view('components.drag');
+    }
 }

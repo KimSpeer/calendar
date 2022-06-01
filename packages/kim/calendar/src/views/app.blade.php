@@ -11,7 +11,6 @@
 <body>
 
 <div>
-
     @livewire('component-test')
 </div>
 

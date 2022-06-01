@@ -21,12 +21,17 @@ Route::get('/calendar', function () {
 });
 
 
+
+
 Route::get('/days', [Calendar::class, 'days']);
 Route::get('/event', [Calendar::class, 'event']);
 Route::get('/new', [Calendar::class, 'new']);
-Route::get('/drag', [Calendar::class, 'new']);
-Route::get('/package', [Calendar::class, 'package']);
+Route::get('/drag', [Calendar::class, 'drag']);
 
+
+Route::get('test', [\App\Http\Controllers\DeveloperController::class, 'index']);
+Route::get('package', [\App\Http\Controllers\Calendar::class, 'package']);
+Route::get('dragpackage', [\App\Http\Controllers\DeveloperController::class, 'dragpackage']);
 
 
 

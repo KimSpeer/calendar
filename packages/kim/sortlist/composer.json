@@ -1,0 +1,17 @@
+{
+    "name": "kimspeer/sortlist",
+    "description": "Drag and Drop Sortlist",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "KimSpeer\\Sortlist\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "KimSpeer",
+            "email": "kim.speer@co-IT.eu"
+        }
+    ],
+    "require": {}
+}

@@ -19,7 +19,7 @@
                 </button>
 
 
-                <div class="flex-auto font-semibold"><button class="font-semibold" wire:click="today"
+                <div class="flex-auto font-semibold"><button class="font-semibold" wire:click.prevent="today"
                         type="button">{{ $monthname }} {{ $year }}</button></div>
 
                 <button wire:click.prevent="nextMonth" type="button"
@@ -260,6 +260,5 @@
     </div>
 
 
-    <button wire:click="like">Like Post</button>
 
 </div>

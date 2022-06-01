@@ -27,7 +27,7 @@ class Calendar extends Component
     public $body;
 
 
-    function __mount(){
+    function __construct(){
         $this->today();
         $this->days();
     }
@@ -148,7 +148,6 @@ class Calendar extends Component
         }
         $this->days();
 
-        dd($this->onemonth);
     }
 
 
@@ -169,6 +168,7 @@ class Calendar extends Component
 
     public function today()
     {
+
         if (!isset($this->today)) {
             $this->today = Carbon::now();
         }
@@ -176,6 +176,7 @@ class Calendar extends Component
         $this->day = $this->today->day;
         $this->month = $this->today->month;
         $this->year = $this->today->year;
+        $this->days();
     }
 
     public function addEvent(){
